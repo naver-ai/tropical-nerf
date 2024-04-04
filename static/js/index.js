@@ -29,6 +29,7 @@ $(document).ready(function() {
 
     });
 
+    /*
     var options = {
 			slidesToScroll: 1,
 			slidesToShow: 3,
@@ -57,6 +58,7 @@ $(document).ready(function() {
     		console.log(state);
     	});
     }
+    */
 
     /*var player = document.getElementById('interpolation-video');
     player.addEventListener('loadedmetadata', function() {
@@ -65,6 +67,8 @@ $(document).ready(function() {
         player.currentTime = player.duration / 100 * this.value;
       })
     }, false);*/
+
+    /*
     preloadInterpolationImages();
 
     $('#interpolation-slider').on('input', function(event) {
@@ -74,5 +78,5 @@ $(document).ready(function() {
     $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
     bulmaSlider.attach();
-
+    */
 })

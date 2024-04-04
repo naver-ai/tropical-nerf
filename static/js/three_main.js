@@ -207,9 +207,11 @@ if ( WebGL.isWebGLAvailable() ) {
 
 } else {
 
-    const warning = WebGL.getWebGLErrorMessage();
-    $( '#teaser' ).children().last().remove();
-    $( '#teaser' ).append( warning );
-    $( '#teaser' ).css( 'height', '120px')
+    for ( var i = 0; i < 2; i++ ) {
+        const warning = WebGL.getWebGLErrorMessage();
+        $( '#teaser' + i ).children().last().remove();
+        $( '#teaser' + i ).append( warning );
+        $( '#teaser' + i ).css( 'height', '240px')
+    }
 
 }
