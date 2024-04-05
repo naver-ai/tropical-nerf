@@ -141,8 +141,8 @@ function load_glb( loader, path, scene, hflip = false ) {
 }
 
 
-load_glb( loader, './static/meshes/bunny.glb', scenes[0], true )
-load_glb( loader, './static/meshes/dragon.glb', scenes[1], false )
+load_glb( loader, './meshes/bunny.glb', scenes[0], true )
+load_glb( loader, './meshes/dragon.glb', scenes[1], false )
 
 
 // Interactive UI
