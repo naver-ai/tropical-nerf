@@ -2,6 +2,20 @@
 
 This is the repository that contains source code for the [TropicalNeRF website](https://tropical-nerf.github.io).
 
+
+## Build and deploy
+
+```bash
+npm run build  # build 
+npm run deploy # deploy
+```
+
+## Local demo
+
+```bash
+npx vite
+```
+
 Should you find this repository beneficial for your work, please consider citing it.
 ```
 @article{Kim2024tropical,
