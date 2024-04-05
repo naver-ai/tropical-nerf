@@ -29,6 +29,8 @@
   <script type="module" src="./static/js/bulma-slider.min.js"></script>
   <script type="module" src="./static/js/index.js"></script>
   <script type="module" src="./static/js/three_main.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
 
@@ -159,65 +161,6 @@
   </div>
 </section>
 
-
-<!-- <section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -247,11 +190,23 @@
   </div>
 </section>
 
-
 <section class="section">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Main Results</h2>
+        <article class="message is-info">
+          <div class="message-header">
+            <p>Theorem 4.5 (Hypersurface and eikonal constraint).</p>
+          </div>
+          <div class="message-body">
+            Let \( \tau(\mathrm{x}; \Theta_\mathrm{x}) \) be a trilinear interpolation function parameterized by \( \Theta_\mathrm{x} \), neighboring features in a cubic grid, for a given coordinate \( \mathrm{x} \).
+            A hypersurface \( \tau(\mathrm{x}) = 0 \) is on the two diagonal points \( \tau(\mathrm{x}_0)=\tau(\mathrm{x}_7)=0 \) while \( \tau(\mathrm{x}_{1\dots 6}) \ne 0 \) for the other six points consisting of a cube. Assumed that it satisfies the eikonal constraint \( \|\nabla \tau(\mathrm{x}) \|_2 = 1 \) for all \( \mathrm{x} \in [0, 1]^3 \). Then, the hypersurface of \( \tau(\mathrm{x})=0 \)￼is a plane.
+          </div>
+        </article>
+        <b>Proof sketch.</b> Since the eikonal equation is first-order partial differential, the eikonal constraint makes hypersurfaces smooth, ideally, a plane.
+      </div>
+    </div>
 
       <!-- Visual Effects. -->
       <!-- <div class="column">
@@ -286,13 +241,13 @@
 
         </div>
       </div> -->
-    </div>
+    <!-- </div> -->
     <!--/ Matting. -->
 
-    <!-- Animation. -->
+    <!-- Animation. 
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
+        <h2 class="title is-3">Animation</h2> -->
 
         <!-- Interpolating. -->
         <!-- <h3 class="title is-4">Interpolating states</h3>
@@ -349,8 +304,8 @@
         </div> -->
         <!--/ Re-rendering. -->
 
-      </div>
-    </div>
+    <!--   </div>
+    </div> -->
     <!--/ Animation. -->
 
 
