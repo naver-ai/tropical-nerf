@@ -29,6 +29,7 @@
   <script type="module" src="./static/js/bulma-slider.min.js"></script>
   <script type="module" src="./static/js/index.js"></script>
   <script type="module" src="./static/js/three_main.js"></script>
+  <script type="module" src="./static/js/three_hypersurface.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -57,10 +58,10 @@
         </a>
         <div class="navbar-dropdown">
           <a class="navbar-item" href="https://ku-cvlab.github.io/3DFuse/" target="_blank">
-            3DFuse (ICLR'24)
+            3DFuse (ICLR '24)
           </a>
           <a class="navbar-item" href="https://dl.acm.org/doi/10.5555/3618408.3618936" target="_blank">
-            InstantPose (ICML'23)
+            InstantPose (ICML '23)
           </a>
         </div>
       </div>
@@ -195,7 +196,7 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">TL;DR</h2>
-        <p>Analytical mesh extraction from an SDF's neural surfaces with trilinear-interpolating positional encoding methods (<i>e.g.</i>, InstantNGP) through the eikonal constraint of hypersurface planarity (Theorem 4.5) with the \( \epsilon \)-error toleration technique (Theorem 4.7).
+        <p>Analytical mesh extraction from an SDF's neural surfaces with trilinear-interpolating positional encoding methods (<i>e.g.</i>, InstantNGP) through the eikonal constraint of hypersurface planarity <span class="reference">(Theorem 4.5)</span> with the \( \epsilon \)-error toleration technique <span class="reference">(Theorem 4.7)</span>.
         </p>
       </div>
     </div>
@@ -204,8 +205,11 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Motivation</h2>
         <p>
-          Previous works assumed they extract meshes from Continuous Piecewise Affine (CPWA) functions. It implies that the functions have piecewise linearity, <i>i.e.</i>, ReLU neural networks. However, if you use trilinear interpolation for positional encoding, the networks are no longer linear almost everywhere. In Sec. 4.2, we stated that <i>"In a trilinear space, \( \tau \) projects a line to a curve except the lines on the grid. Notably, the diagonal line \( \mathrm{t} = (t,t,t)^\intercal \) where \( t \in [0, 1] \) is projected to a cubic Bézier curve (<i>ref</i>. Proposition A.2)."</i> Here, tricky one is that the intersection of two curved hypersurfaces is not a line, even multiple curved lines can be found. Henceforth, Thales's theorem (Sec. 3.4) is no longer employed for identifying the point of intersection between a curved edge and a curved hypersurface. Notice that we deal with this problem in light of the discovery of flat constraints from the eikonal equation (Thm. 4.5) and the analytical approximation (Thm. 4.7).
+          Previous works assumed they extract meshes from Continuous Piecewise Affine (CPWA) functions. It implies that the functions have piecewise linearity, <i>i.e.</i>, ReLU neural networks. However, if you use trilinear interpolation for positional encoding, the networks are no longer linear <i>almost everywhere</i>. In a trilinear space, \( \tau \) projects a line to a curve except the lines on the grid. Notably, the diagonal line \( \mathrm{t} = (t,t,t)^\intercal \) where \( t \in [0, 1] \) is projected to a cubic Bézier curve <span class="reference">(<i>ref</i>. Proposition A.2)</span>. Note that the intersection of two curved hypersurfaces is not a line, even multiple curved lines can be found. Henceforth, Thales's theorem <span class="reference">(Section 3.4)</span> is no longer employed for identifying the point of intersection between a curved edge and a curved hypersurface. We deal with this problem in light of the discovery of flat constraints from the eikonal equation <span class="reference">(Theorem. 4.5)</span> and the analytical approximation <span class="reference">(Theorem. 4.7)</span>.
         </p>
+        <div class="has-text-centered">
+          <div id="hypersurface" class="column"></div>
+        </div>
       </div>
     </div>
 
@@ -224,6 +228,9 @@
         <p>
           <b><i>Proof sketch.</i></b> Since the eikonal equation is first-order partial differential, the eikonal constraint makes hypersurfaces smooth, which is a plane. To be the second derivatives are equal to zero, we can show that \( \tau(\mathrm{x}_1) + \tau(\mathrm{x}_2) + \tau(\mathrm{x}_4) = 0 \), \( \tau(\mathrm{x}_3) + \tau(\mathrm{x}_5) + \tau(\mathrm{x}_6) = 0 \), \( \tau(\mathrm{x}_1) + \tau(\mathrm{x}_6) = 0 \), \( \tau(\mathrm{x}_2) + \tau(\mathrm{x}_5) = 0 \), and \( \tau(\mathrm{x}_3) + \tau(\mathrm{x}_4) = 0 \) are the planary condition for the six points. Notice that 3-bit representations for the integer indices indicate relative positions in a cube. For the derivation, please see the proof in the Appendix A.
         </p>
+        <div class="has-text-centered">
+          <div id="hyperplane" class="column"></div>
+        </div>
         <br/>
         <article class="message is-info">
           <div class="message-header">
@@ -251,10 +258,10 @@
           </div>
         </article>
         <p>
-          <b><i>Proof sketch.</i></b> Thm. 4.7 exactly handles where the eikonal equation doesn't make perfect hyperplanes. First, we observed the characteristics of trilinear hypersurfaces as illustrated in Figure 6 in the Appendix. Among 64 edge scenarios within a trilinear region, a diagonal plane intersects with the hypersurface in nearly all cases. Moreover, we can take advantage of it since we can eliminate one variable by assuming the curved edge lies on the  plane. In this light, Thm. 4.7 used linear algebra to rearrange two trilinear equations to get the results (Eqn. 16 and 17). As we mentioned in the manuscript in the right column of Line 225-235: "the new vertices lie on at least two hypersurfaces, and the new edges exist on the same hypersurface, while the eikonal constraint minimizes any associated error. This error is tolerated by the hyperparameter =1e-4 (Sec. 6.1) as specified in Definition 3.4."
+          <b><i>Proof sketch. </i></b> Theorem. 4.7 exactly handles where the eikonal equation doesn't make perfect hyperplanes. First, we observed the characteristics of trilinear hypersurfaces as illustrated in Figure 6 in the Appendix. Among 64 edge scenarios within a trilinear region, a diagonal plane intersects with the hypersurface in nearly all cases. Moreover, we can take advantage of it since we can eliminate one variable by assuming the curved edge lies on the  plane. In this light, Theorem. 4.7 used linear algebra to rearrange two trilinear equations to get the results (Eqn. 16 and 17). As we mentioned in the manuscript in the right column of Line 225-235: "the new vertices lie on at least two hypersurfaces, and the new edges exist on the same hypersurface, while the eikonal constraint minimizes any associated error. This error is tolerated by the hyperparameter =1e-4 <span class="reference">(Secion 6.1)</span> as specified in Definition 3.4."
         </p>
         <p>
-          Figure 5 also suggests empirical evidence. Empirically, the flatness error, derived from the proof of Theorem 4.5, is effectively controlled by the learning rate of the eikonal loss. In the experiments, we used 0.01 to give our results, while many other neural implicit surface learning methods were used to exploit a higher learning rate of 0.1 (e.g., Yariv et al., 2023). Note that, in practice, the eikonal loss is only applied to near-surface using clamps (if the target position is obviously far from a surface, ignore it; it is wise since we are concerned with the surfaces, not wanting exact SDFs for all space) for effective learning, which is sufficient to our extraction method.
+          Figure 5 also suggests empirical evidence. Empirically, the flatness error, derived from the proof of Theorem 4.5, is effectively controlled by the learning rate of the eikonal loss. In the experiments, we used 0.01 to give our results, while many other neural implicit surface learning methods were used to exploit a higher learning rate of 0.1 <span class="reference">(e.g., Yariv et al., 2023)</span>. Note that, in practice, the eikonal loss is only applied to near-surface using clamps (if the target position is obviously far from a surface, ignore it; it is wise since we are concerned with the surfaces, not wanting exact SDFs for all space) for effective learning, which is sufficient to our extraction method.
         </p>
       </div>
     </div>
@@ -395,7 +402,7 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{Kim2024tropical,
-  author = {Kim, Jin-hwa},
+  author = {Kim, Jin-Hwa},
   title = {{Polyhedral Complex Derivation from Piecewise Trilinear Networks}},
   url = {http://arxiv.org/abs/2402.10403},
   year = {2024}
