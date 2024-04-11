@@ -81,11 +81,11 @@ cameras.forEach((camera) => {
     camera.lookAt(0, 0, 0);
 });
 
-console.log(scenes);
+// console.log(scenes);
 
 scenes.forEach((scene) => {
-    console.log(scene);
-    scene.background = new THREE.Color( 0xffffff );
+    // console.log(scene);
+    scene.background = new THREE.Color( 0xf0f0f0 );
     // scene.add( new THREE.AmbientLight( 0xcccccc ) );
 });
 
@@ -171,7 +171,7 @@ function onMouseMove(event) {
 
 for (var i = 0; i < 2; i++) {
     renderers[i].domElement.camera = cameras[i];
-    renderers[i].domElement.addEventListener('mousemove', onMouseMove, false)
+    // renderers[i].domElement.addEventListener('mousemove', onMouseMove, false)
 };
 
 

@@ -59,6 +59,11 @@ body {
   height: 340px;
 }
 
+#teaser0 canvas, #teaser1 canvas {
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
 .subtitle {
   margin-top: 5px;
   display: block;
