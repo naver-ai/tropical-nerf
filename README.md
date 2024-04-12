@@ -6,6 +6,10 @@ This is the repository that contains source code for the [TropicalNeRF website](
 ## Build and deploy
 
 ```bash
+npm install vite
+```
+
+```bash
 npm run build  # build 
 npm run deploy # deploy
 ```

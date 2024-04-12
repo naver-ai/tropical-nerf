@@ -36,6 +36,10 @@ body {
   font-variant: small-caps;
 }
 
+.reference {
+  color: #666;
+}
+
 .teaser .hero-body {
   padding-top: 0;
   padding-bottom: 0;
@@ -53,13 +57,17 @@ body {
   padding-bottom: 2rem;
 }
 
-#teaser0, #teaser1 {
+#teaser0, #teaser1, #hypersurface, #hyperplane {
   display: inline-block;
   width: 380px;
   height: 340px;
 }
 
-#teaser0 canvas, #teaser1 canvas {
+#teaser0 canvas, 
+#teaser1 canvas,
+#hypersurface canvas,
+#hyperplane canvas
+{
   border-radius: 10px;
   border: 1px solid #eee;
 }

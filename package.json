@@ -9,6 +9,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "delaunator": "^5.0.1",
     "gh-pages": "^6.1.1",
     "mathjax": "^3.2.2",
     "stats.js": "^0.17.0",
