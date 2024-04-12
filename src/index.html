@@ -264,11 +264,11 @@
           </div>
         </article>
         <p>
-          <b><i>Proof sketch. </i></b> Theorem. 4.7 exactly handles where the eikonal equation doesn't make perfect hyperplanes. First, we observed the characteristics of trilinear hypersurfaces as illustrated in Figure 6 in the Appendix. Among 64 edge scenarios within a trilinear region, a diagonal plane intersects with the hypersurface in nearly all cases. Moreover, we can take advantage of it since we can eliminate one variable by assuming the curved edge lies on the  plane. In this light, Theorem. 4.7 used linear algebra to rearrange two trilinear equations to get the results (Eqn. 16 and 17). As we mentioned in the manuscript in the right column of Line 225-235: "the new vertices lie on at least two hypersurfaces, and the new edges exist on the same hypersurface, while the eikonal constraint minimizes any associated error. This error is tolerated by the hyperparameter =1e-4 <span class="reference">(Secion 6.1)</span> as specified in Definition 3.4."
+          <b><i>Proof sketch. </i></b> Theorem. 4.7 handles where the eikonal equation doesn't make perfect hyperplanes. First, we observed the characteristics of trilinear hypersurfaces as illustrated in Figure 6 in the Appendix. Among 64 edge scenarios within a trilinear region, a diagonal plane (<i>e.g.</i>, \(x=z\) intersects with the hypersurface in most cases. Moreover, we can take advantage of eliminating one variable by assuming the curved edge lies on the  diagonal plane. In this light, Theorem. 4.7 rearranges two trilinear equations to get the above solution. As we mentioned in the paper, the new vertices lie on at least two hypersurfaces, and the new edges exist on the same hypersurface, while the eikonal constraint minimizes any associated error. This error is tolerated by the hyperparameter \(\epsilon=10^{-4}\) <span class="reference">(Secion 6.1)</span> using the \(\epsilon\)-tolerate sign vector in Definition 3.4.
         </p>
-        <p>
+        <!--<p>
           Figure 5 also suggests empirical evidence. Empirically, the flatness error, derived from the proof of Theorem 4.5, is effectively controlled by the learning rate of the eikonal loss. In the experiments, we used 0.01 to give our results, while many other neural implicit surface learning methods were used to exploit a higher learning rate of 0.1 <span class="reference">(<i>e.g.</i>, Yariv et al., 2023)</span>. Note that, in practice, the eikonal loss is only applied to near-surface using clamps (if the target position is obviously far from a surface, ignore it; it is wise since we are concerned with the surfaces, not wanting exact SDFs for all space) for effective learning, which is sufficient to our extraction method.
-        </p>
+        </p>-->
       </div>
     </div>
 
