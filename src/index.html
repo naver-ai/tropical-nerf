@@ -218,7 +218,7 @@
           </div>
           <div class="message-body">
             <i>Let \( \tau(\mathrm{x}; \Theta_\mathrm{x}) \) be a trilinear interpolation function parameterized by \( \Theta_\mathrm{x} \), neighboring features in a cubic grid, for a given coordinate \( \mathrm{x} \).
-            A hypersurface \( \tau(\mathrm{x}) = 0 \) is on the two diagonal points \( \tau(\mathrm{x}_0)=\tau(\mathrm{x}_7)=0 \) while \( \tau(\mathrm{x}_{1\dots 6}) \ne 0 \) for the other six points consisting of a cube. Assumed that it satisfies the eikonal constraint \( \|\nabla \tau(\mathrm{x}) \|_2 = 1 \) for all \( \mathrm{x} \in [0, 1]^3 \). Then, the hypersurface of \( \tau(\mathrm{x})=0 \)￼is a plane.</i>
+            A hypersurface \( \tau(\mathrm{x}) = 0 \) is on the two diagonal points \( \tau(\mathrm{x}_0)=\tau(\mathrm{x}_7)=0 \) while \( \tau(\mathrm{x}_{1\dots 6}) \ne 0 \) for the other six points consisting of a cube. Assumed that it satisfies the eikonal constraint \( \|\nabla \tau(\mathrm{x}) \|_2 = 1 \) for all \( \mathrm{x} \in [0, 1]^3 \). Then, the hypersurface of \( \tau(\mathrm{x})=0 \) is a plane.</i>
           </div>
         </article>
         <p>
@@ -253,7 +253,6 @@
         <p>
           <b><i>Proof sketch.</i></b> Thm. 4.7 exactly handles where the eikonal equation doesn't make perfect hyperplanes. First, we observed the characteristics of trilinear hypersurfaces as illustrated in Figure 6 in the Appendix. Among 64 edge scenarios within a trilinear region, a diagonal plane intersects with the hypersurface in nearly all cases. Moreover, we can take advantage of it since we can eliminate one variable by assuming the curved edge lies on the  plane. In this light, Thm. 4.7 used linear algebra to rearrange two trilinear equations to get the results (Eqn. 16 and 17). As we mentioned in the manuscript in the right column of Line 225-235: "the new vertices lie on at least two hypersurfaces, and the new edges exist on the same hypersurface, while the eikonal constraint minimizes any associated error. This error is tolerated by the hyperparameter =1e-4 (Sec. 6.1) as specified in Definition 3.4."
         </p>
-        <p>
           Figure 5 also suggests empirical evidence. Empirically, the flatness error, derived from the proof of Theorem 4.5, is effectively controlled by the learning rate of the eikonal loss. In the experiments, we used 0.01 to give our results, while many other neural implicit surface learning methods were used to exploit a higher learning rate of 0.1 (e.g., Yariv et al., 2023). Note that, in practice, the eikonal loss is only applied to near-surface using clamps (if the target position is obviously far from a surface, ignore it; it is wise since we are concerned with the surfaces, not wanting exact SDFs for all space) for effective learning, which is sufficient to our extraction method.
         </p>
       </div>
