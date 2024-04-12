@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import Stats from 'stats.js'
+// import Stats from 'stats.js'
 
 
 const vertex_shader = `varying vec3 vNormal;
@@ -176,8 +176,8 @@ for (var i = 0; i < 2; i++) {
 
 
 // Stats
-const stats = new Stats();
-document.body.appendChild(stats.dom);
+// const stats = new Stats();
+// document.body.appendChild(stats.dom);
 
 
 // Animation
@@ -196,7 +196,7 @@ function animate() {
     renderers[0].render( scenes[0], cameras[0] );
     renderers[1].render( scenes[1], cameras[1] );
     
-    stats.update();
+    // stats.update();
 }
 
 

@@ -3,7 +3,7 @@ import WebGL from 'three/addons/capabilities/WebGL.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { ConvexGeometry } from 'three/addons/geometries/ConvexGeometry.js';
-import Stats from 'stats.js'
+// import Stats from 'stats.js'
 import Delaunator from 'delaunator';
 
 
@@ -336,8 +336,8 @@ const controls = [
 const raycaster = new THREE.Raycaster();
 
 // Stats
-const stats = new Stats();
-document.body.appendChild(stats.dom);
+// const stats = new Stats();
+// document.body.appendChild(stats.dom);
 
 // Animation
 function animate() {
@@ -350,7 +350,7 @@ function animate() {
     renderers[0].render( scenes[0], cameras[0] );
     renderers[1].render( scenes[1], cameras[1] );
     
-    stats.update();
+    // stats.update();
 }
 
 function set_warning( el ) {
