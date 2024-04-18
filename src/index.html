@@ -218,6 +218,16 @@
 
     <div class="columns is-centered">
       <div class="column is-full-width">
+        <h2 class="title is-3">Overview</h2>
+          <img src="static/images/overview.svg#svgView(viewBox(0,0,585,120))" width="100%"/>
+          <p>
+            A schematic illustration of our mesh extraction algorithm. <span class="highlight-number">(1)</span> The first step involves finding sets of vertices and edges from the grid of positional embedding, where piecewise trilinear interpolation performs based on this grid. <span class="highlight-number">(2)</span> The curved edge subdivision is performed iterating over each neuron of MLP dealing with linear <span class="highlight-number">(2a)</span>, bilinear <span class="highlight-number">(2b)</span>, and trilinear <span class="highlight-number">(2c)</span> cases. The empty circles indicate new vertices, subdividing the corresponding edges. <span class="highlight-number">(3)</span> The skeletonization finds the vertices and edges consisting of the zero level-set, and <span class="highlight-number">(4)</span> the extracting faces perform sorting polygon vertices using face normals.
+          </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
         <h2 class="title is-3">Theory</h2>
         <article class="message is-info">
           <div class="message-header">
