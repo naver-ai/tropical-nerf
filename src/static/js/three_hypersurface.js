@@ -303,7 +303,7 @@ scenes.forEach((scene) => {
 
     // add notations
     for ( var i = 0; i < 8; i++ ) {
-        var textSprite = createTextSprite( 'X' + i );
+        var textSprite = createTextSprite( 'P' + i );
         const offset = 0.04;
         var z = (i & 4) ? 0.5 + offset : -0.5 - offset;
         var y = (i & 2) ? 0.5 + offset : -0.5 - offset;
