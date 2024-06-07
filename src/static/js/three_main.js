@@ -60,26 +60,28 @@ const cameras = [
 
 // Calculate a position in Cartesian coordinates from Matplotlib's default spherical coordinates
 // Assume a radius (distance from origin) - you may need to adjust this based on your scene's scale
-const radius = 10;
-const elev = 15; // Matplotlib's default elevation in degrees
-const azim = 120; // Matplotlib's default azimuth in degrees
+function convert_to_polar_angles(elevation, azimuth, radius) {
+    // Convert angles from degrees to radians
+    const elevRadians = THREE.MathUtils.degToRad(elevation);
+    const azimRadians = THREE.MathUtils.degToRad(azimuth);
 
-// Convert angles from degrees to radians
-const elevRadians = THREE.MathUtils.degToRad(elev);
-const azimRadians = THREE.MathUtils.degToRad(azim);
+    // Calculate Cartesian coordinates
+    const x = radius * Math.cos(elevRadians) * Math.cos(azimRadians);
+    const y = radius * Math.sin(elevRadians);
+    const z = radius * Math.cos(elevRadians) * Math.sin(azimRadians);
+    return [x, y, z]
+}
 
-// Calculate Cartesian coordinates
-const x = radius * Math.cos(elevRadians) * Math.cos(azimRadians);
-const y = radius * Math.sin(elevRadians);
-const z = radius * Math.cos(elevRadians) * Math.sin(azimRadians);
+for ( var i = 0; i < 2; i++ ) {
+    // In degrees
+    const angles = convert_to_polar_angles(15, 120, 10);
 
-cameras.forEach((camera) => {
     // Set the camera position
-    camera.position.set(x, y, z);
+    cameras[i].position.set(angles[0], angles[1], angles[2]);
 
     // Assuming the center of your scene is the origin (0, 0, 0)
-    camera.lookAt(0, 0, 0);
-});
+    cameras[i].lookAt(0, 0, 0);
+};
 
 // console.log(scenes);
 
@@ -102,14 +104,18 @@ const loader = new GLTFLoader();
 const sceneMeshes = new Array()
 
 
-function load_glb( loader, path, scene, hflip = false ) {
+function load_glb( loader, path, scene, hflip = false, scale_factor = 1.0 ) {
     loader.load( path, function ( gltf ) {
 
         // Flip the model across the X-axis
-        const scale = 4.3;
+        const scale = 4.3 * scale_factor;
         gltf.scene.scale.x = scale * (hflip ? -1 : 1);
         gltf.scene.scale.y = scale;
         gltf.scene.scale.z = scale;
+
+        if (path.includes("bunny")) {
+            gltf.scene.position.y += 0.5;
+        }
 
         gltf.scene.traverse(function (child) {
             if (child.isMesh) {
@@ -141,8 +147,9 @@ function load_glb( loader, path, scene, hflip = false ) {
 }
 
 
-load_glb( loader, './meshes/bunny.glb', scenes[0], true )
-load_glb( loader, './meshes/dragon.glb', scenes[1], false )
+// load_glb( loader, './meshes/small/bunny.glb', scenes[0], true, 1.0 )
+load_glb( loader, './meshes/large/bunny.glb', scenes[0], false, 0.75 )
+load_glb( loader, './meshes/large/dragon.glb', scenes[1], false, 1.0 )
 
 
 // Interactive UI
@@ -189,7 +196,7 @@ function animate() {
         scene.traverse(function (child) {
             if (child.isMesh) {
                 // child.rotation.x += 0.01;
-                child.rotation.y += 0.001 * (scene.hflip ? -1 : 1);
+                child.rotation.y += 0.0005 * (scene.hflip ? -1 : 1);
             }
         })
     });
