@@ -148,8 +148,8 @@ function load_glb( loader, path, scene, hflip = false, scale_factor = 1.0 ) {
 
 
 // load_glb( loader, './meshes/small/bunny.glb', scenes[0], true, 1.0 )
-load_glb( loader, './meshes/large/bunny.glb', scenes[0], false, 0.75 )
-load_glb( loader, './meshes/large/dragon.glb', scenes[1], false, 1.0 )
+load_glb( loader, './meshes/large/bunny.glb', scenes[0], false, 0.65 )
+load_glb( loader, './meshes/large/dragon.glb', scenes[1], false, 0.9 )
 
 
 // Interactive UI
