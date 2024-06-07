@@ -1,6 +1,6 @@
 # Polyhedral Complex Derivation from Piecewise Trilinear Networks
 
-This is the repository that contains source code for the [TropicalNeRF website](https://tropical-nerf.github.io).
+This is the repository that contains source code for the [TropicalNeRF website](https://naver-ai.github.io/tropical-nerf/).
 
 
 ## Build and deploy
