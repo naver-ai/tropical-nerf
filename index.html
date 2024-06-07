@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Polyhedral Complex Derivation from Piecewise Trilinear Networks">
+  <meta name="keywords" content="Polyhedral Complex, Neural Radiance Fields, 3D Mesh">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tropical NeRF</title>
+  <script>
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Google+Sans:600|Noto+Sans|Noto+Sans:600|Castoro"
+        rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/linux-libertine-o" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
+  <!-- <link rel="stylesheet" href="./static/css/fontawesome.all.min.css"> -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="shortcut icon" href="./assets/favicon_white-DZFmniEu.svg" media="(prefers-color-scheme:dark)">
+  <link rel="shortcut icon" href="./assets/favicon_black-D6ZeOdtE.svg" media="(prefers-color-scheme:light)">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <script type="module" crossorigin src="./assets/index-0QIsaL3S.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BJYNjdE_.css">
+</head>
+<body>
+
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://naver-career.gitbook.io/en/positions/ai-ml/generation-research#selected-publications" target="_blank">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+          <!-- <img src="./static/images/naver_ailab.png" class="png-icon"> -->
+      </span>
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://ku-cvlab.github.io/3DFuse/" target="_blank">
+            3DFuse (ICLR '24)
+          </a>
+          <a class="navbar-item" href="https://dl.acm.org/doi/10.5555/3618408.3618936" target="_blank">
+            InstantPose (ICML '23)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Polyhedral Complex Derivation from Piecewise Trilinear Networks</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="http://wityworks.com" target="_blank">Jin-Hwa Kim</a><sup>1,2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>NAVER AI Lab,</span>&nbsp;
+            <span class="author-block"><sup>2</sup>AI Institute of Seoul National University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2402.10403"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=" "
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block disabled">
+                <a href="javascript:alert('TBA. Stay tuned!');"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href=" "
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body columns has-text-centered">
+      <div class="notification is-danger">
+        <!-- <button class="delete"></button> -->
+      </div>
+      <div id="teaser0" class="column"></div>
+      <div id="teaser1" class="column"></div>
+    </div>
+    <h2 class="subtitle has-text-centered">
+        Stanford Bunny and Dragon meshes by<br/>our analytical extraction from InstantNGP <span class="reference">(Müller et al., 2022)</span>
+    </h2>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advancements in visualizing deep neural networks provide insights into their structures and mesh extraction from Continuous Piecewise Affine (CPWA) functions. Meanwhile, developments in neural surface representation learning incorporate non-linear positional encoding, addressing issues like spectral bias; however, this poses challenges in applying mesh extraction techniques based on CPWA functions. Focusing on trilinear interpolating methods as positional encoding, we present theoretical insights and an analytical mesh extraction, <i>showing the transformation of hypersurfaces to flat planes within the trilinear region under the eikonal constraint</i>. Moreover, we introduce a method for approximating intersecting points among three hypersurfaces contributing to broader applications. We empirically validate correctness and parsimony through chamfer distance and efficiency, and angular distance, while examining the correlation between the eikonal loss and the planarity of the hypersurfaces.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">TL;DR</h2>
+        <p>Analytical mesh extraction from an SDF's neural surfaces with trilinear-interpolating positional encoding methods (<i>e.g.</i>, InstantNGP) through the eikonal constraint of hypersurface planarity <span class="reference">(Theorem 4.5)</span> with the \( \epsilon \)-error toleration technique <span class="reference">(Theorem 4.7)</span>.
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Motivation</h2>
+        <p>
+          Previous works assumed they extract meshes from Continuous Piecewise Affine (CPWA) functions. It implies that the functions have piecewise linearity, <i>i.e.</i>, ReLU neural networks. However, if you use trilinear interpolation for positional encoding, the networks are no longer linear <i>almost everywhere</i>. In a trilinear space within a unit cubic grid, trilinear interpolation function \( \tau \) projects a line to a curve except the lines on the grid. Notably, the diagonal line \( \mathrm{t} = (t,t,t)^\intercal \) where \( t \in [0, 1] \) is projected to a cubic Bézier curve <span class="reference">(<i>ref</i>. Proposition A.2)</span>. Note that the intersection of two curved hypersurfaces is not a line, even multiple curved lines can be found. Henceforth, Thales's theorem <span class="reference">(Section 3.4)</span> is no longer employed for identifying the point of intersection between a curved edge and a curved hypersurface. We deal with this problem in light of the discovery of planary constraints from the eikonal equation <span class="reference">(Theorem. 4.5)</span> and the analytical approximation <span class="reference">(Theorem. 4.7)</span>.
+        </p>
+        <div class="has-text-centered">
+          <div id="hypersurface" class="column"></div>
+        </div>
+        <p>
+          The above interactive figure depicts a hypersurface \(\tau(\mathrm{x})=0\) where \(\tau(\mathrm{x_0})=\tau(\mathrm{x_7})=0\) with some curvature. The trilinear coefficients are \((0, 0.4 + \delta, 0.1 - \delta, 0.5, -0.5, -0.1, -0.4, 0)\) for the grid features \(P_{0 \dots 7}\), with a distortion of \(\delta = 1\).
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Overview</h2>
+          <img src="./assets/overview-CYBYJKQQ.svg#svgView(viewBox(0,0,585,120))" width="100%"/>
+          <p>
+            A schematic illustration of our mesh extraction algorithm. <span class="highlight-number">(1)</span> The first step involves finding sets of vertices and edges from the grid of positional embedding, where piecewise trilinear interpolation performs based on this grid. As previously demonstrated in our paper <span class="reference">(Section 3)</span>, each neuron in the MLP corresponds to a hypersurface that contributes to the formation of the mesh. By applying the eikonal constraint, we ensure that each hypersurface is sufficiently smooth. We then systematically subdivide the existing set of edges using these hypersurfaces, iterating through each neuron until we reach the network's output. You can think of this process as being akin to sculpting or carving. <span class="highlight-number">(2)</span> The curved edge subdivision is performed iterating over each neuron of MLP dealing with linear <span class="highlight-number">(2a)</span>, bilinear <span class="highlight-number">(2b)</span>, and trilinear <span class="highlight-number">(2c)</span> cases. These are schematic illustration: imagine that trilinear subdivision is occurred in the next iteration after initial 2a or 2b cases of the grid edges. The empty circles indicate new vertices, subdividing the corresponding edges. <span class="highlight-number">(3)</span> The skeletonization finds the vertices and edges consisting of the zero level-set, and <span class="highlight-number">(4)</span> the extracting faces perform sorting polygon vertices using face normals.
+          </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Theory</h2>
+        <article class="message is-info">
+          <div class="message-header">
+            <p>Theorem 4.5 (Hypersurface and eikonal constraint)</p>
+          </div>
+          <div class="message-body">
+            <i>Let \( \tau(\mathrm{x}; \Theta_\mathrm{x}) \) be a trilinear interpolation function parameterized by \( \Theta_\mathrm{x} \), neighboring features in a cubic grid, for a given coordinate \( \mathrm{x} \).
+            A hypersurface \( \tau(\mathrm{x}) = 0 \) is on the two diagonal points \( \tau(\mathrm{x}_0)=\tau(\mathrm{x}_7)=0 \) while \( \tau(\mathrm{x}_{1\dots 6}) \ne 0 \) for the other six points consisting of a cube. Assumed that it satisfies the eikonal constraint \( \|\nabla \tau(\mathrm{x}) \|_2 = 1 \) for all \( \mathrm{x} \in [0, 1]^3 \). Then, the hypersurface of \( \tau(\mathrm{x})=0 \) is a plane.</i>
+          </div>
+        </article>
+        <p>
+          <b><i>Proof sketch.</i></b> Since the eikonal equation is first-order partial differential, the eikonal constraint makes hypersurfaces smooth, which is a plane. To be the second derivatives are equal to zero, we can show that \( \tau(\mathrm{x}_1) + \tau(\mathrm{x}_2) + \tau(\mathrm{x}_4) = 0 \), \( \tau(\mathrm{x}_3) + \tau(\mathrm{x}_5) + \tau(\mathrm{x}_6) = 0 \), \( \tau(\mathrm{x}_1) + \tau(\mathrm{x}_6) = 0 \), \( \tau(\mathrm{x}_2) + \tau(\mathrm{x}_5) = 0 \), and \( \tau(\mathrm{x}_3) + \tau(\mathrm{x}_4) = 0 \) are the planary condition for the six points. Notice that 3-bit representations for the integer indices indicate relative positions in a cube. For the derivation, please see the proof in the Appendix A.
+        </p>
+        <div class="has-text-centered">
+          <div id="hyperplane" class="column"></div>
+        </div>
+        <p>
+          The above interactive figure depicts a hyperplane \(\tau(\mathrm{x})=0\) where \(\tau(\mathrm{x_0})=\tau(\mathrm{x_7})=0\) having no curvature. The trilinear coefficients for this hyperplane are \((0, 0.4, 0.1, 0.5, -0.5, -0.1, -0.4, 0)\) for the grid features \(P_{0 \dots 7}\) satisfying the planary condition.
+        </p>
+        <br/>
+        <article class="message is-info">
+          <div class="message-header">
+            <p>Theorem 4.7 (Intersection of two hypersurfaces and a diagonal plane)</p>
+          </div>
+          <div class="message-body">
+            <i>
+              \( \def\tnn{\tilde{\nu}} \def\vx{\mathrm{x}} \def\mP{\mathrm{P}} \def\mQ{\mathrm{Q}} \def\mX{\mathrm{X}} \)Let \( \tnn \) be (piece-wise) trilinear networks, \( \tnn_0(\vx)=0 \) and \( \tnn_1(\vx)=0 \) be two hypersurfaces passing two points \( \vx_0 \) and \( \vx_7 \) such that \( \tnn_0(\vx_0)=\tnn_1(\vx_0)=0 \) and \( \tnn_0(\vx_7)=\tnn_1(\vx_7)=0 \),
+              \( \mP_i := \tnn_0(\vx_i) \),
+              \( \mP_\alpha = \big[\mP_0;~\mP_{1};~\mP_{4};~\mP_{5} \big] \),
+              \( \mP_\beta = \big[\mP_2;~\mP_{3};~\mP_{6};~\mP_{7}\big] \), \( \mQ_i := \tnn_1(\vx_i) \), likewise for \( \mQ_\alpha \) and \( \mQ_\beta \), and
+              \( \mX = [(1-x)^2;~ x(1-x);~ (1-x)x;~ x^2] \).
+              Then, \( x, z \in [0, 1] \) of the intersection point of the two hypersurfaces and a diagonal plane of \( x=z \) is the solution of the following quartic equation:
+              \[
+                \mX^\intercal \big(
+                    \mP_\alpha \mQ_\beta^\intercal
+                    -\mP_\beta \mQ_\alpha^\intercal
+                    \big) \mX = 0
+              \]
+              while
+              \[
+                  y = \frac{\mX^\intercal\mP_\alpha}{\mX^\intercal(\mP_\alpha - \mP_\beta)} \hspace{2em}(\mP_\alpha \neq \mP_\beta).
+              \]
+            </i>
+          </div>
+        </article>
+        <p>
+          <b><i>Proof sketch. </i></b> Theorem. 4.7 handles where the eikonal equation doesn't make perfect hyperplanes. First, we observed the characteristics of trilinear hypersurfaces as illustrated in Figure 6 in the Appendix. Among 64 edge scenarios within a trilinear region, a diagonal plane (<i>e.g.</i>, \(x=z\) intersects with the hypersurface in most cases. Moreover, we can take advantage of eliminating one variable by assuming the curved edge lies on the  diagonal plane. In this light, Theorem. 4.7 rearranges two trilinear equations to get the above solution. As we mentioned in the paper, the new vertices lie on at least two hypersurfaces, and the new edges exist on the same hypersurface, while the eikonal constraint minimizes any associated error. This error is tolerated by the hyperparameter \(\epsilon=10^{-4}\) <span class="reference">(Secion 6.1)</span> using the \(\epsilon\)-tolerate sign vector in Definition 3.4.
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Chamfer distances</h2>
+          <div class="has-text-centered">
+            <img src="./assets/cd_results-Cc5AiuwD.svg#svgView(viewBox(0,0,380,240))" width="480" height="240"/>
+          </div>
+          <p>
+              Chamfer distances for the Stanford dragon varying the number of vertices and the model sizes. Given that our method extracts vertices from the intersection points of hypersurfaces, it enables parsimonious representations using the lower number of vertices having better CD. As depicted, ours are located in the lower-left region compared with the baselines. 
+          </p>
+          <p>
+              Our method inherently holds an advantage over MC in capturing optimal vertices and faces, especially in cases where the target surfaces exhibit planar characteristics. When dealing with curved surfaces, the smaller grid size of the <i>Large</i> model views a curved surface in a smaller interval, and it tends to approach the plane. From the plotting of <i>Small</i> to <i>Large</i>, our CDs (colored crosses) are decreasing to zero, consistently with better CEs, confirming this speculation. The complete results of the Large models for the Stanford 3D Scanning repository can be found in Tables 6 to 8 in Appendix F.
+          </p>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width content">
+        <h2 class="title is-3">Discussions</h2>
+        <h4>Q1. Is it possible to perfectly learn an SDF that fully satisfies the eikonal equation?</h4>
+        <p class="notification">
+          The above proof sketch of Theorem 4.7 describes the rationale behind our \(\epsilon\)-tolerate approach. Moreover, empirically, the flatness error (if it goes to zero, the hypersurface must be a plane), derived from the proof of Theorem 4.5, is effectively controlled by the learning rate of the eikonal loss. 
+          <!--In the experiments, we used 0.01 to give our results, while many other neural implicit surface learning methods were used to exploit a higher learning rate of 0.1 <span class="reference">(<i>e.g.</i>, Yariv et al., 2023)</span>.-->Note that in practice, the eikonal loss should be applied primarily to positions near the surface for effective learning. If the target position is clearly distant from any surface, it can be disregarded. This focus is crucial because our interest lies in the surfaces themselves, rather than in obtaining exact signed distance functions for the entire space. This approach is sufficient for our extraction method.
+        </p>
+        <h4>Q2. What is the significance of tropical geometry analysis for the algorithm?</h4>
+        <p class="notification">
+          While Berzins (2023) did not explicitly mention it, the use of tropical geometry in deep neural networks <span class="reference">(Zhang et al., 2018)</span> allows us to mathematically describe each neuron's contribution as a folded hyperplane from a tropical geometry perspective. A key implication of this concept is that it facilitates for-loop iterations over neurons across layers in Algorithm 3, avoiding the need to visit each exponentially growing linear region.
+      </div>
+    </div>
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">References</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li>
+              Berzins, A. (2023). <i>Polyhedral complex extraction from relu networks using edge subdivision.</i> <a href="https://proceedings.mlr.press/v202/berzins23a.html">ICML</a>.
+            </li>
+            <li>
+              Humayun, A. et al. (2023). <i>SplineCam: Exact Visualization and Characterization of Deep Network Geometry and Decision Boundary.</i> <a href="https://imtiazhumayun.github.io/splinecam/">CVPR</a>.
+            </li>
+            <li>
+              Lei, J., & Jia, K. (2020). <i>Analytic Marching: An Analytic Meshing Solution from Deep Implicit Surface Networks.</i> <a href="https://proceedings.mlr.press/v119/lei20a.html">ICML</a>.
+            </li>
+            <li>
+              Zhang, L., Naitzat, G., & Lim, L. H. (2018). <i>Tropical Geometry of Deep Neural Networks.</i> <a href="http://proceedings.mlr.press/v80/zhang18i.html">ICML</a>.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+    <!-- Acknowledgments -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Acknowledgments</h2>
+        <div class="content has-text-justified">
+          <p>
+            I would like to express my sincere appreciation to my brilliant colleagues, Sangdoo Yun, Dongyoon Han, and Injae Kim, for their contributions to this work. Their constructive feedback and guidance have been instrumental in shaping the work. The NAVER Smart Machine Learning (NSML) platform <span class="reference">(Kim et al., 2018)</span> had been used for experiments.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Acknowledgements -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{Kim2024tropical,
+  author = {Kim, Jin-Hwa},
+  title = {{Polyhedral Complex Derivation from Piecewise Trilinear Networks}},
+  journal = {arXiv preprint arXiv:2402.10403}
+  year = {2024}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href=" ">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href=" " class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>. Powered by <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> theme.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
