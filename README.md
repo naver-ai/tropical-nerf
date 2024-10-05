@@ -23,7 +23,7 @@ npx vite
 Should you find this repository beneficial for your work, please consider citing it.
 ```
 @inproceedings{Kim2024tropical,
-author = {Kim, Jin-hwa},
+author = {Kim, Jin-Hwa},
 booktitle = {Advances in Neural Information Processing Systems 37},
 title = {{Polyhedral Complex Derivation from Piecewise Trilinear Networks}},
 year = {2024}
