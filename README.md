@@ -1,6 +1,6 @@
-# Polyhedral Complex Derivation from Piecewise Trilinear Networks
+# Polyhedral Complex Derivation from Piecewise Trilinear Networks (NeurIPS 2024)
 
-This is the repository that contains source code for the [TropicalNeRF website](https://tropical-nerf.github.io).
+This is the repository that contains source code for the [TropicalNeRF website](https://naver-ai.github.io/tropical-nerf/).
 
 
 ## Build and deploy
@@ -27,7 +27,6 @@ Should you find this repository beneficial for your work, please consider citing
   booktitle = {Advances in Neural Information Processing Systems 37 (NeurIPS)},
   title = {Polyhedral Complex Derivation from Piecewise Trilinear Networks},
   year = {2024}
-}
 ```
 
 # Website License
